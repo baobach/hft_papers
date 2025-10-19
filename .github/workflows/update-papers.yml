@@ -16,19 +16,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Debug papers.csv location
-        run: |
-          pwd
-          ls -l
-          ls -l download_papers
-          head -5 download_papers/papers.csv
-
-      - name: Debug workspace
-        run: |
-          pwd
-          ls -l
-          ls -l HFT_Papers
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
