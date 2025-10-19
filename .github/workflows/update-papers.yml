@@ -32,10 +32,6 @@ jobs:
         run: |
           python main/crawler.py --append download_papers/papers.csv --format csv
 
-      - name: Regenerate Markdown from CSV for display
-        run: |
-          python main/crawler.py --append download_papers/papers.csv --format md --limit 200 > download_papers/papers.md
-
       - name: Update README.md with top 20 recent papers
         run: |
           python main/update_readme_table.py
