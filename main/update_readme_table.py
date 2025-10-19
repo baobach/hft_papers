@@ -11,7 +11,7 @@ TABLE_HEADER = (
 
 # Read CSV and get top 20 most recent papers
 def get_top_papers(csv_path, n=20):
-    df = pd.read_csv(csv_path)
+    df = pd.read_csv(csv_path, quotechar='"', escapechar='\\', on_bad_lines='skip')
     # Select only the columns needed for the README table
     columns_needed = ["Paper", "Author(s)", "Description", "Source", "Date"]
     df = df[columns_needed]

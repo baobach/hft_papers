@@ -125,7 +125,7 @@ def build_csv(rows: List[Dict[str, Any]]) -> str:
     # Output as CSV string
     import io
     output = io.StringIO()
-    writer = csv.writer(output)
+    writer = csv.writer(output, quoting=csv.QUOTE_MINIMAL)
     writer.writerow(["Paper", "Author(s)", "Description", "Source", "Source Link", "Date"])
     for r in rows:
         writer.writerow([
