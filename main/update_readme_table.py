@@ -2,7 +2,7 @@ import pandas as pd
 from datetime import datetime
 import re
 
-CSV_PATH = "hft_papers/papers.csv"
+CSV_PATH = "download_papers/papers.csv"
 README_PATH = "README.md"
 TABLE_HEADER = (
     "| Paper | Author(s) | Description | Source | Date |\n"

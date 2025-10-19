@@ -2,7 +2,7 @@
 
 A curated list of Quantitative Finance papers.
 
-Due to the increasing interest in my project, I have updated the new format and address some issues with the first version. In this new version, I have updated the table format with brief descriptions and organized it in a separate folder which can be accessed [here](https://github.com/baobach/HFT_Papers/blob/main/hft_papers/papers.md).
+Due to the increasing interest in my project, I have updated the new format and address some issues with the first version. In this new version, I have updated the table format with brief descriptions and organized it in a separate folder which can be accessed [here](https://github.com/baobach/HFT_Papers/blob/main/download_papers/papers.csv).
 
 Please reach out to me at robert@quantfin.net for any further questions. I will update this monthly and display the **top 20** recent papers here.
 
