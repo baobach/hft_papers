@@ -13,13 +13,21 @@ jobs:
   update-papers:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Debug papers.csv location
+        run: |
+          pwd
+          ls -l
+          ls -l hft_papers
+          head -5 hft_papers/papers.csv
+
       - name: Debug workspace
         run: |
           pwd
           ls -l
           ls -l HFT_Papers
-      - name: Checkout repository
-        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -35,11 +43,11 @@ jobs:
 
       - name: Append new papers to CSV (deduplicated)
         run: |
-          python main/crawler.py --append HFT_Papers/papers.csv --format csv
+          python main/crawler.py --append hft_papers/papers.csv --format csv
 
       - name: Regenerate Markdown from CSV for display
         run: |
-          python main/crawler.py --append HFT_Papers/papers.csv --format md --limit 200 > HFT_Papers/papers.md
+          python main/crawler.py --append hft_papers/papers.csv --format md --limit 200 > hft_papers/papers.md
 
       - name: Update README.md with top 20 recent papers
         run: |
@@ -49,9 +57,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add HFT_Papers/papers.csv HFT_Papers/papers.md README.md
+          git add hft_papers/papers.csv hft_papers/papers.md README.md
           if ! git diff --cached --quiet; then
-            git commit -m "chore: monthly update of HFT_Papers/papers.csv, papers.md, and README.md"
+            git commit -m "chore: monthly update of hft_papers/papers.csv, papers.md, and README.md"
             git push
           else
             echo "No changes to commit"
