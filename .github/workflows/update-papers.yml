@@ -13,6 +13,11 @@ jobs:
   update-papers:
     runs-on: ubuntu-latest
     steps:
+      - name: Debug workspace
+        run: |
+          pwd
+          ls -l
+          ls -l hft_papers
       - name: Checkout repository
         uses: actions/checkout@v4
 
