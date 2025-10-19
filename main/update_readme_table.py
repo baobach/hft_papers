@@ -21,7 +21,7 @@ def get_top_papers(csv_path, n=20):
     return df
 
 def build_table(df):
-    lines = [TABLE_HEADER]
+    lines = []
     for _, row in df.iterrows():
         lines.append(
             f"| {row['Paper']} | {row['Author(s)']} | {row['Description']} | {row['Source']} | {row['Date'].date() if row['Date'] else ''} |"
@@ -31,9 +31,9 @@ def build_table(df):
 def replace_table_in_readme(readme_path, new_table):
     with open(readme_path, encoding="utf-8") as f:
         content = f.read()
-    # Regex to find the table section
+    # Regex to find the table rows (after the header)
     pattern = re.compile(r'(## Most recent HFT papers\n\n\| Paper \| Author\(s\) \| Description \| Source \| Date \|\n\| --- \| --- \| --- \| --- \| --- \|\n)([\s\S]*?)(?=\n#|\n##|\n\Z)', re.MULTILINE)
-    # Replace the table section
+    # Replace only the table rows, not the header
     new_content = re.sub(pattern, r'\1' + new_table + '\n', content)
     with open(readme_path, "w", encoding="utf-8") as f:
         f.write(new_content)
